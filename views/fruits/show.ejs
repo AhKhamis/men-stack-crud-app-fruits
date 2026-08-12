@@ -5,12 +5,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= fruit.name %></title> <!-- Dynamic title based on fruit name -->
+    <title><%= fruit.name %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
     
 <body>
-  <a href="/fruits">Back to Fruits</a>
   <h1><%= fruit.name %></h1>
 <% if(fruit.isReadyToEat){ %>
 <p>This fruit is ready to eat!</p>
@@ -23,6 +23,13 @@
 </form>
 <!-- add edit page link here -->
 <a href="/fruits/<%= fruit._id %>/edit">Edit <%= fruit.name %></a>
+
+<div class="fruit-details">
+
+  </div>
+  <a class="fruits-index-link" href="/fruits">
+    <div class="index-link-text">Back to Fruits</div>
+  </a>
 
 </body>
   </body>

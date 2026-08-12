@@ -5,6 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const methodOverride = require("method-override");
 const morgan = require("morgan");
+const path = require("path");
 
 
 // Models
@@ -88,9 +89,19 @@ app.put("/fruits/:fruitId", async (req, res) => {
   } else {
     req.body.isReadyToEat = false;
   }
-  
+
   await Fruit.findByIdAndUpdate(req.params.fruitId, req.body);
   res.redirect(`/fruits/${req.params.fruitId}`);
+});
+
+app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride("_method"));
+
+// new code below this line
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get("/", async (req, res) => {
+  res.render("index.ejs");
 });
 
 
